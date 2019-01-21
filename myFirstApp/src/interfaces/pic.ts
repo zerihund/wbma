@@ -1,3 +1,5 @@
+import { Thumbnail } from 'ionic-angular';
+
 export interface pic {
   file_id: string;
   filename: string;
@@ -8,5 +10,11 @@ export interface pic {
   media_type:string;
   mime_type:string;
   time_added:string;
+  thumbnails?:Thumbnail;
 
+}
+export interface Thumbnail {
+  160:string;
+  320 ?:string;
+  640?:string;
 }
