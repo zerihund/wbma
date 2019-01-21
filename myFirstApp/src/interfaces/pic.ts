@@ -10,7 +10,8 @@ export interface pic {
   media_type:string;
   mime_type:string;
   time_added:string;
-  thumbnails?:Thumbnail;
+  screenshot:string;
+  thumbnails:object;
 
 }
 export interface Thumbnail {

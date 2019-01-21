@@ -17,5 +17,8 @@ export class MediaProvider {
   getAllMedia() {
     return this.http.get < pic[]>('http://media.mw.metropolia.fi/wbma/media');
   }
+  getSingleMedia(id) {
+    return this.http.get<pic>('http://media.mw.metropolia.fi/wbma/media/' + id);
+  }
 
 }

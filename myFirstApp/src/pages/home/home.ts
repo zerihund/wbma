@@ -21,13 +21,16 @@ export class HomePage {
   getAllFiles() {
     this.mediaProvider.getAllMedia().subscribe((response:pic[])=>{
         console.log(response);
-        this.picArray = response;
+        /*this.picArray = response;
         this.picArray.map(media=>{
           media.thumbnails ={'160':media.filename.split(".")[0] + '-tn160.png'};
+        });*/
+        response.forEach((media:pic)=>{
+            this.mediaProvider.getSingleMedia(media.file_id).subscribe((file:pic)=>{
+              this.picArray.push(file);
+            });
         });
-    },
-      (error)=>{console.log(error)}
-      );
+    });
   }
 
 
