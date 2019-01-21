@@ -21,6 +21,9 @@ export class HomePage {
     this.http.get < pic[]>('http://media.mw.metropolia.fi/wbma/media').subscribe((response:pic[])=>{
         console.log(response);
         this.picArray = response;
+        this.picArray.map(p=>{
+          p.thumbnails= p.filename.split('.')[0] + '-tn320.png'
+        })
     },
       (error)=>{console.log(error)}
       );

@@ -8,5 +8,7 @@ export interface pic {
   media_type:string;
   mime_type:string;
   time_added:string;
+  screenshot?:string;
+  thumbnails?:string;
 
 }
