@@ -1,37 +1,25 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { pic } from '../../interfaces/pic';
+import { Pic } from '../../interfaces/Pic';
 import { MediaProvider } from '../../providers/media/media';
-
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
 export class HomePage {
-  picArray: pic[] = [];
-  url="http://media.mw.metropolia.fi/wbma/uploads/";
-  constructor(public navCtrl: NavController, public http: HttpClient,private mediaProvider:MediaProvider) {
-
+  picArray: Observable<Pic[]>;
+  url = 'http://media.mw.metropolia.fi/wbma/uploads/';
+  constructor(
+    public navCtrl: NavController, public http: HttpClient,
+    private mediaProvider: MediaProvider) {
   }
-  ngOnInit(){
+  ngOnInit() {
     this.getAllFiles();
   }
   getAllFiles() {
-    this.mediaProvider.getAllMedia().subscribe((response:pic[])=>{
-        console.log(response);
-        /*this.picArray = response;
-        this.picArray.map(media=>{
-          media.thumbnails ={'160':media.filename.split(".")[0] + '-tn160.png'};
-        });*/
-        response.forEach((media:pic)=>{
-            this.mediaProvider.getSingleMedia(media.file_id).subscribe((file:pic)=>{
-              this.picArray.push(file);
-            });
-        });
-    });
+    this.picArray = this.mediaProvider.getAllMedia();
   }
-
-
 }

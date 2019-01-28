@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { MediaProvider } from '../../providers/media/media';
-import {User, LoginResponse, RegisterResponse} from '../../interfaces/pic';
+import { LoginResponse, RegisterResponse, User } from '../../interfaces/Pic';
 
 
 /**
@@ -17,9 +17,9 @@ import {User, LoginResponse, RegisterResponse} from '../../interfaces/pic';
 })
 export class LoginPage {
 
-  user:User ={username:null};
+  user: User = { username: null };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public mediaProvider:MediaProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider) {
   }
 
   ionViewDidLoad() {
@@ -38,15 +38,15 @@ export class LoginPage {
         console.log(error);
       });
   }
-  registerUser(){
+  registerUser() {
       this.mediaProvider.registerUser(this.user).subscribe(
-        (response:RegisterResponse) => {
+        (response: RegisterResponse) => {
         console.log(response);
-        this.mediaProvider.loggedin=true;
+        this.mediaProvider.loggedin = true;
         this.navCtrl.parent.select(0);
       },
-          error =>{
+          error => {
             console.log(error);
-          })
+          });
   }
 }

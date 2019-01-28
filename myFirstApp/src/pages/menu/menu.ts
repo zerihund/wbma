@@ -17,14 +17,14 @@ import { MediaProvider } from '../../providers/media/media';
   templateUrl: 'menu.html',
 })
 export class MenuPage {
-  constructor(public navCtrl: NavController, public navParams: NavParams, public  mediaProvider:MediaProvider) {
+  constructor(
+    public navCtrl: NavController, public navParams: NavParams,
+    public mediaProvider: MediaProvider) {
   }
-
   tab1Root = HomePage;
   tab2Root = LoginPage;
   tab3Root = LogoutPage;
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');
   }
-
 }

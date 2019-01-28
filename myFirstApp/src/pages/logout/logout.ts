@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {User} from '../../interfaces/pic';
-import {MediaProvider} from '../../providers/media/media';
+import { User } from '../../interfaces/Pic';
+import { MediaProvider } from '../../providers/media/media';
 
 /**
  * Generated class for the LogoutPage page.
@@ -15,13 +15,13 @@ import {MediaProvider} from '../../providers/media/media';
   templateUrl: 'logout.html',
 })
 export class LogoutPage {
-  user:User ={username:null};
-  constructor(public navCtrl: NavController, public navParams: NavParams,public mediaProvider:MediaProvider) {
+  user: User = { username: null };
+  constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LogoutPage');
-    this.mediaProvider.loggedin =false;
+    this.mediaProvider.loggedin = false;
   }
 
 }

@@ -1,6 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {LoginResponse, pic, RegisterResponse, User} from '../../interfaces/pic';
+import {
+  LoginResponse,
+  RegisterResponse,
+  User,
+  Pic,
+} from '../../interfaces/Pic';
 
 /*
   Generated class for the MediaProvider provider.
@@ -10,31 +15,37 @@ import {LoginResponse, pic, RegisterResponse, User} from '../../interfaces/pic';
 */
 @Injectable()
 export class MediaProvider {
-  mediaAPI ='http://media.mw.metropolia.fi/wbma';
+  mediaAPI = 'http://media.mw.metropolia.fi/wbma';
   loggedin = false;
+
   constructor(public http: HttpClient) {
     console.log('Hello MediaProvider Provider');
   }
+
   getAllMedia() {
-    return this.http.get < pic[]>('http://media.mw.metropolia.fi/wbma/media');
+    console.log('Getallmedia called');
+    return this.http.get <Pic[]>('http://media.mw.metropolia.fi/wbma/media');
   }
+
   getSingleMedia(id) {
-    return this.http.get<pic>('http://media.mw.metropolia.fi/wbma/media/' + id);
+    return this.http.get<Pic>('http://media.mw.metropolia.fi/wbma/media/' + id);
   }
+
   login(user: User) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-type': 'application/json'
-      })
+        'Content-type': 'application/json',
+      }),
     };
     return this.http.post<LoginResponse>(this.mediaAPI + '/login',
       user, httpOptions);
   }
-  registerUser(user:User){
+
+  registerUser(user: User) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-type': 'application/json'
-      })
+        'Content-type': 'application/json',
+      }),
     };
     return this.http.post<RegisterResponse>(this.mediaAPI + '/users',
       user, httpOptions);
