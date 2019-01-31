@@ -7,7 +7,8 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Login/Register</ion-title>
+    <ion-title *ngIf="!showRegister">Login</ion-title>
+    <ion-title *ngIf="showRegister">Register</ion-title>
   </ion-navbar>
 
 
@@ -15,8 +16,8 @@
 
 
 <ion-content padding>
-
-  <form (ngSubmit)="login()">
+  <ion-row style="height: 25vh"></ion-row>
+  <form *ngIf="!showRegister" (ngSubmit)="login()">
     <ion-item>
       <ion-label>Username</ion-label>
       <ion-input type="text" [(ngModel)] = "user.username" name="username"></ion-input>
@@ -27,12 +28,11 @@
     </ion-item>
     <button ion-button full type="submit">Log IN</button>
   </form>
-  <ion-row style="height: 20vh"></ion-row>
 
-  <form (ngSubmit)="registerUser()">
+  <form *ngIf="showRegister" (ngSubmit)="registerUser()">
     <ion-item>
       <ion-label>Username</ion-label>
-      <ion-input type="text" [(ngModel)] = "user.username" name="username"></ion-input>
+      <ion-input #username (ionBlur)="checkUserExists()" [(ngModel)] = "user.username" name="username"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Email</ion-label>
@@ -42,8 +42,16 @@
       <ion-label>Password</ion-label>
       <ion-input type="password" [(ngModel)] = "user.password" name="password"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label>Repeat-Password</ion-label>
+      <ion-input (ionBlur)="passWordMatch()" type="password" [(ngModel)] = "confirmPassword" name="confirmPassword"></ion-input>
+    </ion-item>
     <button ion-button full type="submit">Register</button>
   </form>
+  <ion-item>
+    <button ion-button *ngIf="!showRegister" (click)="swapLoginRegister()">No user account? Register</button>
+    <button ion-button *ngIf="showRegister" (click)="swapLoginRegister()">Have an account? Login</button>
+  </ion-item>
 </ion-content>
 
 <!--<ion-content padding>-->

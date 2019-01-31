@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {
   LoginResponse,
   RegisterResponse,
+  UserExists,
   User,
   Pic,
 } from '../../interfaces/Pic';
@@ -52,5 +53,8 @@ export class MediaProvider {
   }
   getFileByTag(tag){
     return this.http.get<Pic[]>(this.mediaAPI + '/tags/' + tag);
+  }
+  checkUser(username){
+    return this.http.get<UserExists>(this.mediaAPI +'/users/username/' + username);
   }
 }

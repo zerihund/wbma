@@ -41,3 +41,7 @@ export interface RegisterResponse {
   user_id: number;
 }
 
+export  interface UserExists {
+  username:string;
+  available:boolean;
+}
