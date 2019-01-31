@@ -22,4 +22,5 @@ export class HomePage {
   getAllFiles() {
     this.picArray = this.mediaProvider.getAllMedia();
   }
+
 }

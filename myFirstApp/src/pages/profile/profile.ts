@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Pic, User } from '../../interfaces/Pic';
+import { pic, Pic, User } from '../../interfaces/Pic';
 import { MediaProvider } from '../../providers/media/media';
 
 /**
@@ -16,7 +16,7 @@ import { MediaProvider } from '../../providers/media/media';
 })
 export class ProfilePage {
   user: User = { username: null };
-  profile:Pic [];
+  profile: Pic [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider) {
   }
@@ -28,6 +28,9 @@ export class ProfilePage {
   }
 
   getProfile() {
-    
+
+      this.mediaProvider.getFileByTag().subscribe((file:pic)=>{
+
+      });
   }
 }

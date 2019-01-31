@@ -3,6 +3,7 @@ import { Thumbnail } from 'ionic-angular';
 export interface Pic {
   file_id: string;
   filename: string;
+  tag?:string;
   filesize: string;
   title: string;
   description: string;
@@ -39,6 +40,4 @@ export interface RegisterResponse {
   message: string;
   user_id: number;
 }
-export interface ProfileResponse {
-  
-}
+
