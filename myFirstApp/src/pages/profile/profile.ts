@@ -29,8 +29,8 @@ export class ProfilePage {
 
   getProfile() {
 
-      this.mediaProvider.getFileByTag().subscribe((file:pic)=>{
-
+      this.mediaProvider.getFileByTag('profile').subscribe((file:pic)=>{
+        console.log(pic);
       });
   }
 }
