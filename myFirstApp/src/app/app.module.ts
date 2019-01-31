@@ -9,7 +9,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MediaProvider } from '../providers/media/media';
 import { LoginPage } from '../pages/login/login';
-import { LogoutPage } from '../pages/logout/logout';
+import { ProfilePage } from '../pages/profile/profile';
 import { MenuPage } from '../pages/menu/menu';
 
 @NgModule({
@@ -17,7 +17,7 @@ import { MenuPage } from '../pages/menu/menu';
     MyApp,
     HomePage,
     LoginPage,
-    LogoutPage,
+    ProfilePage,
     MenuPage,
   ],
   imports: [
@@ -31,7 +31,7 @@ import { MenuPage } from '../pages/menu/menu';
     MyApp,
     HomePage,
     LoginPage,
-    LogoutPage,
+    ProfilePage,
     MenuPage,
   ],
   providers: [

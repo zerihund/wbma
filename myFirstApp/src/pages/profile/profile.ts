@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { User } from '../../interfaces/Pic';
+import { Pic, User } from '../../interfaces/Pic';
 import { MediaProvider } from '../../providers/media/media';
 
 /**
- * Generated class for the LogoutPage page.
+ * Generated class for the ProfilePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,16 +12,22 @@ import { MediaProvider } from '../../providers/media/media';
 
 @Component({
   selector: 'page-logout',
-  templateUrl: 'logout.html',
+  templateUrl: 'profile.html',
 })
-export class LogoutPage {
+export class ProfilePage {
   user: User = { username: null };
+  profile:Pic [];
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LogoutPage');
+    console.log('ionViewDidLoad ProfilePage');
+    localStorage.clear();
     this.mediaProvider.loggedin = false;
   }
 
+  getProfile() {
+    this.profile = this.mediaProvider.getFileByTag('25');
+  }
 }

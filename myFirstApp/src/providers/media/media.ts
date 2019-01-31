@@ -4,7 +4,7 @@ import {
   LoginResponse,
   RegisterResponse,
   User,
-  Pic,
+  Pic, ProfileResponse,
 } from '../../interfaces/Pic';
 
 /*
@@ -49,5 +49,8 @@ export class MediaProvider {
     };
     return this.http.post<RegisterResponse>(this.mediaAPI + '/users',
       user, httpOptions);
+  }
+  getFileByTag(tag){
+    return this.http.get<Pic[]>(this.mediaAPI + '/tags/' + tag);
   }
 }

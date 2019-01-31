@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
-import { LogoutPage } from '../logout/logout';
+import { ProfilePage } from '../profile/profile';
 import { LoginPage } from '../login/login';
 import { MediaProvider } from '../../providers/media/media';
 
@@ -23,7 +23,7 @@ export class MenuPage {
   }
   tab1Root = HomePage;
   tab2Root = LoginPage;
-  tab3Root = LogoutPage;
+  tab3Root = ProfilePage;
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuPage');
   }
