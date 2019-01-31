@@ -31,6 +31,11 @@ export class LoginPage {
         console.log(response);
         this.mediaProvider.loggedin = true;
         localStorage.setItem('token', response.token);
+        localStorage.setItem('username', response.user.username);
+        localStorage.setItem('email',response.user.email);
+        localStorage.setItem('user_id',String(response.user.user_id));
+        console.log("UserId");
+        console.log(localStorage.getItem('user_id'));
         this.navCtrl.parent.select(0);
 
       },

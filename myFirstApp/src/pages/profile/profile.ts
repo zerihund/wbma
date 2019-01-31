@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { pic, Pic, User } from '../../interfaces/Pic';
+import {  Pic, User } from '../../interfaces/Pic';
 import { MediaProvider } from '../../providers/media/media';
 
 /**
@@ -15,22 +15,48 @@ import { MediaProvider } from '../../providers/media/media';
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
-  user: User = { username: null };
+  userName:string ;
+  userEmail:string;
   profile: Pic [];
-
+  avatar: string;
+  url = 'http://media.mw.metropolia.fi/wbma/uploads/';
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider: MediaProvider) {
   }
 
   ionViewDidLoad() {
+    this.getProfile();
     console.log('ionViewDidLoad ProfilePage');
-    localStorage.clear();
-    this.mediaProvider.loggedin = false;
+    this.logout();
+    /*localStorage.clear();
+    this.mediaProvider.loggedin = false;*/
   }
 
   getProfile() {
+      this.userName =localStorage.getItem('username');
+      this.userEmail =localStorage.getItem('email');
+      console.log("email");
+      console.log(this.userEmail);
+    console.log(localStorage.getItem('user_id'));
+    const myUserId =localStorage.getItem('user_id')
+      this.mediaProvider.getFileByTag('profile').subscribe((file:Pic[])=>{
+        //console.log(file);
 
-      this.mediaProvider.getFileByTag('profile').subscribe((file:pic)=>{
-        console.log(pic);
+        file.forEach((item:Pic)=>{
+          console.log('something');
+          console.log(item.user_id);
+
+          if (item.user_id.toString() === myUserId){
+            this.avatar = item.file_id.toString();
+            console.log('avatars is here:');
+            console.log(this.avatar);
+          }
+        });
       });
+  }
+  logout(){
+    localStorage.clear();
+    this.mediaProvider.loggedin =false;
+    console.log('you are logged out');
+    this.navCtrl.parent.select(0);
   }
 }

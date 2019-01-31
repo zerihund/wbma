@@ -4,7 +4,7 @@ import {
   LoginResponse,
   RegisterResponse,
   User,
-  Pic, ProfileResponse,
+  Pic,
 } from '../../interfaces/Pic';
 
 /*

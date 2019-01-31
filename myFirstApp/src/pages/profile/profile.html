@@ -15,4 +15,13 @@
 
 <ion-content padding>
 
+    <img [src]="url + (avatar | tnail: 'small' | async)">
+
+  <p>{{userName}}</p>
+  <p>{{userEmail}}</p>
+  <ion-row style="height: 5vh"></ion-row>
+  <form (ngSubmit)="logout()">
+    <button ion-button full >Log Out</button>
+  </form>
+
 </ion-content>
