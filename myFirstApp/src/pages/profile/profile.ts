@@ -28,6 +28,6 @@ export class ProfilePage {
   }
 
   getProfile() {
-    this.profile = this.mediaProvider.getFileByTag('25');
+    
   }
 }
