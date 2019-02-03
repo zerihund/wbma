@@ -56,6 +56,8 @@ export class ProfilePage {
   logout(){
     localStorage.clear();
     this.mediaProvider.loggedin =false;
+
+
     console.log('you are logged out');
     this.navCtrl.parent.select(0);
   }

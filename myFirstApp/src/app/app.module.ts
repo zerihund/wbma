@@ -12,6 +12,7 @@ import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { MenuPage } from '../pages/menu/menu';
 
+
 @NgModule({
   declarations: [
     MyApp,

@@ -13,6 +13,7 @@ export class HomePage {
   picArray: Observable<Pic[]>;
   url = 'http://media.mw.metropolia.fi/wbma/uploads/';
   constructor(
+
     public navCtrl: NavController, public http: HttpClient,
     private mediaProvider: MediaProvider) {
   }
