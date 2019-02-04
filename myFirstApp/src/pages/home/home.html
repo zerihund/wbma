@@ -3,6 +3,9 @@
     <ion-title>
       Ionic Blank
     </ion-title>
+    <ion-buttons end *ngIf="mediaProvider.loggedin">
+      <button ion-button float-md-right="1px" (click)="goToUpload()">UpLoad</button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -18,4 +21,5 @@
       <button  ion-button clear item-end>View</button>
     </ion-item>
   </ion-list>
+
 </ion-content>

@@ -5,7 +5,7 @@ import {
   RegisterResponse,
   UserExists,
   User,
-  Pic,
+  Pic, UploadResponse,
 } from '../../interfaces/Pic';
 
 /*
@@ -56,5 +56,14 @@ export class MediaProvider {
   }
   checkUser(username){
     return this.http.get<UserExists>(this.mediaAPI +'/users/username/' + username);
+  }
+  upload(data: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token': localStorage.getItem('token'),
+      }),
+    };
+    return this.http.post<UploadResponse>(this.mediaAPI + '/media',
+      data, httpOptions);
   }
 }

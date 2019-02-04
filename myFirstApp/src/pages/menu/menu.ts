@@ -5,6 +5,7 @@ import { ProfilePage } from '../profile/profile';
 import { LoginPage } from '../login/login';
 import { MediaProvider } from '../../providers/media/media';
 
+
 /**
  * Generated class for the MenuPage page.
  *
