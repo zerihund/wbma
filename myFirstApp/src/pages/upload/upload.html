@@ -33,6 +33,32 @@
 
   </form>
   <ion-card>
-    <img #preview [src]="filedata">
+    <img #preview [src]="filedata"
+   [ngStyle]="{'filter': 'brightness(' + brightness/100 + ') contrast(' + contrast/100 +') saturate(' + thermometer/100 +') sepia(' + water + ')'}">
+
+    <ion-item>
+      <ion-range [min]="0" [max]="200" [step]="1" [(ngModel)]="brightness">
+        <ion-icon small range-left name="sunny"></ion-icon>
+        <ion-icon range-right name="sunny"></ion-icon>
+      </ion-range>
+    </ion-item>
+    <ion-item>
+      <ion-range [min]="0" [max]="200" [step]="1" [(ngModel)]="contrast">
+        <ion-icon small range-left name="contrast"></ion-icon>
+        <ion-icon range-right name="contrast"></ion-icon>
+      </ion-range>
+    </ion-item>
+    <ion-item>
+      <ion-range [min]="0" [max]="200" [step]="1" [(ngModel)]="water">
+        <ion-icon small range-left name="water"></ion-icon>
+        <ion-icon range-right name="water"></ion-icon>
+      </ion-range>
+    </ion-item>
+    <ion-item>
+      <ion-range [min]="0" [max]="200" [step]="1" [(ngModel)]="thermometer">
+        <ion-icon small range-left name="thermometer"></ion-icon>
+        <ion-icon range-right name="thermometer"></ion-icon>
+      </ion-range>
+    </ion-item>
   </ion-card>
 </ion-content>

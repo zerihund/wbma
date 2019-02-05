@@ -19,6 +19,11 @@ export class UploadPage {
   title ="";
   description ='';
   type ='';
+  brightness =100;
+  thermometer =100;
+  contrast =100;
+  water =0;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public mediaProvider:MediaProvider, public loadingctrl:LoadingController) {
   }
 
@@ -58,12 +63,12 @@ export class UploadPage {
     }, 4000);
   }
   upload(){
-    /*const desc =`<description>${this.description}</description>`;
-    const filters ='<filters> filtersAsText</filters>';*/
+    //const desc =`<description>${this.description}</description>`;
+    //const filters ='<filters> filtersAsText</filters>';
     //show spinner
     const  fd =new FormData();
     fd.append("title",this.title);
-    fd.append("description",this.description);
+    fd.append("description",this.description + ` ${this.brightness}  ${this.thermometer}  ${this.water}  ${this.contrast}`);
     fd.append("file",this.file);
     this.mediaProvider.upload(fd).subscribe(resp=>{
       console.log(resp);
