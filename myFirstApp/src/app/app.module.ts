@@ -11,7 +11,8 @@ import { MediaProvider } from '../providers/media/media';
 import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { MenuPage } from '../pages/menu/menu';
-import  {UploadPage} from '../pages/upload/upload';
+import { UploadPage } from '../pages/upload/upload';
+import { Chooser } from '@ionic-native/chooser';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import  {UploadPage} from '../pages/upload/upload';
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     MediaProvider,
+    Chooser,
 
   ],
 })

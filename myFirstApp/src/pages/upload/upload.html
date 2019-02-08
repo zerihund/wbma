@@ -23,11 +23,10 @@
       <ion-label color="primary" stacked="">Description</ion-label>
       <ion-textarea name ="description" placeholder="description input" [(ngModel)] = "description" ></ion-textarea>
     </ion-item>
-    <ion-item>
-      <ion-label>Choose media file </ion-label>
-      <ion-input type="file" (change)="handleChanges($event)"></ion-input>
-    </ion-item>
     <ion-buttons>
+      <button ion-button type="button"(click)="chooseFile()">Choose File</button>
+      <button ion-button type="button"(click)="takePhoto()">Take Photo</button>
+      <button ion-button type="reset" col="light" (click)="reset()">Reset</button>
       <button ion-button full type="submit">Upload</button>
     </ion-buttons>
 
@@ -35,7 +34,7 @@
   <ion-card>
     <img #preview [src]="filedata"
    [ngStyle]="{'filter': 'brightness(' + brightness/100 + ') contrast(' + contrast/100 +') saturate(' + thermometer/100 +') sepia(' + water + ')'}">
-
+    <ion-list *ngIf="showFilters">
     <ion-item>
       <ion-range [min]="0" [max]="200" [step]="1" [(ngModel)]="brightness">
         <ion-icon small range-left name="sunny"></ion-icon>
@@ -60,5 +59,6 @@
         <ion-icon range-right name="thermometer"></ion-icon>
       </ion-range>
     </ion-item>
+    </ion-list>
   </ion-card>
 </ion-content>

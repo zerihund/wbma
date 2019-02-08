@@ -48,7 +48,7 @@ export class TnailPipe implements PipeTransform {
       this.mediaProvider.getSingleMedia(id).subscribe((response: Pic) => {
         switch (args[0]) {
           case 'large':
-            resolve(response.thumbnails['w160']);
+            resolve(response.thumbnails['w640']);
             break;
           case 'medium':
             resolve(response.thumbnails['w320']);
