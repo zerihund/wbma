@@ -32,7 +32,7 @@
 
   </form>
   <ion-card>
-    <img #preview [src]="filedata"
+    <img #preview [src]="fileData"
    [ngStyle]="{'filter': 'brightness(' + brightness/100 + ') contrast(' + contrast/100 +') saturate(' + thermometer/100 +') sepia(' + water + ')'}">
     <ion-list *ngIf="showFilters">
     <ion-item>

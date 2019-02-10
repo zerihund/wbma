@@ -20,7 +20,7 @@ import { Chooser } from '@ionic-native/chooser';
   templateUrl: 'upload.html',
 })
 export class UploadPage {
-  filedata = '';
+  fileData = '';
   file: File;
   myBlob: Blob;
   title = '';
@@ -34,7 +34,7 @@ export class UploadPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public mediaProvider: MediaProvider,
-              public loadingctrl: LoadingController,
+              public loadingCtrl: LoadingController,
               public chooser: Chooser,
               public alertCtrl: AlertController) {
   }
@@ -51,19 +51,19 @@ export class UploadPage {
     const  reader = new FileReader();
     reader.onloadend = (evt) => {
       // console.log(reader.result);
-      this.filedata = reader.result;
+      this.fileData = reader.result;
     };
     const f: any = this.file;
     if (this.file.type.includes('video')) {
-      this.filedata = 'http://via.placeholder.com/500x200/00?text=Video';
+      this.fileData = 'http://via.placeholder.com/500x200/00?text=Video';
     } else if (this.file.type.includes('audio')) {
-      this.filedata = 'http://via.placeholder.com/500x200/00?text=audio';
+      this.fileData = 'http://via.placeholder.com/500x200/00?text=audio';
     } else {
       reader.readAsDataURL(this.file);
     }
   }*/
   presentLoadingDefault() {
-    const loading = this.loadingctrl.create({
+    const loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
 
@@ -77,8 +77,11 @@ export class UploadPage {
     // const desc =`<description>${this.description}</description>`;
     // const filters ='<filters> filtersAsText</filters>';
     // show spinner
-    if (this.file === undefined || this.title === undefined ) {
-      this.showAlert('Please fill the form properly');
+    console.log('where are')
+    console.log(this.description,this.file,this.title);
+
+    if (this.title === '' || this.description === '') {
+      this.showAlert('Please fill the form correctly!');
     } else {
       const  fd = new FormData();
       fd.append('title', this.title);
@@ -100,12 +103,12 @@ export class UploadPage {
       if (!file.mediaType.includes('image')) {
         this.showFilters = false;
       } else if (file.mediaType.includes('video')) {
-        this.filedata = 'http://via.placeholder.com/500x200/00?text=Video';
+        this.fileData = 'http://via.placeholder.com/500x200/00?text=Video';
       } else if (file.mediaType.includes('audio')) {
-        this.filedata = 'http://via.placeholder.com/500x200/00?text=audio';
+        this.fileData = 'http://via.placeholder.com/500x200/00?text=audio';
       } else if (file.mediaType.includes('image')) {
         this.showFilters = true;
-        this.filedata = file.dataURI;
+        this.fileData = file.dataURI;
       }
       }).catch((error: any) => console.error(error));
   }
@@ -123,8 +126,8 @@ export class UploadPage {
   reset()  {
     this.title = '';
     this.description = '';
-    this.filedata = '';
+    this.fileData = '';
     this.showFilters = false;
-  };
+  }
 
 }
