@@ -1,0 +1,40 @@
+<!--
+  Generated template for the PlayerPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>player</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngIf="file">
+    <ion-item>
+      <h2>{{file.title}}</h2>
+      <p color="primary">{{user_name}}</p>
+    </ion-item>
+    <div *ngIf="type==='image'">
+      <img #imag [src]="this.mediaProvider.imageUrl  + file.filename" [alt]="file.title"
+           [ngStyle]="{'filter': 'brightness(' + (file.description | filters ).brightness/100 + ') contrast(' + (file.description | filters ).contrast/100 +') saturate(' + (file.description | filters ).thermometer/100 +') sepia(' + (file.description | filters ).water + ')'}">
+    </div>
+    <div *ngIf="type==='video'">
+      <video width="320" height="240" controls [poster]="this.mediaProvider.imageUrl + file.screenshot">
+        <source [src]="this.mediaProvider.imageUrl + file.filename" type="video/mp4">
+      </video>
+    </div>
+    <div *ngIf="type===audio">
+      <audio controls>
+        <source [src]="this.mediaProvider.imageUrl + file.filename" type="audio/ogg">
+      </audio>
+    </div>
+    <ion-card-content>
+      <p>{{file.description | description }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

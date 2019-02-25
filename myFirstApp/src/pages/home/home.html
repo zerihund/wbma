@@ -4,7 +4,7 @@
       Ionic Blank
     </ion-title>
     <ion-buttons end *ngIf="mediaProvider.loggedin">
-      <button ion-button float-md-right="1px" (click)="goToUpload()">UpLoad</button>
+      <button ion-button float-md-right="1px"  (click)="goToUpload()">UpLoad</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -13,12 +13,14 @@
   <ion-list>
     <ion-item *ngFor="let image of picArray | async">
       <ion-thumbnail item-start>
-        <img [src]="url+(image.file_id | tnail | async)" [alt]="image.title">
+        <img *ngIf="image.media_type==='image'" [src]="url+(image.file_id | tnail | async)" [alt]="image.title">
+        <audio *ngIf="image.media_type===audio" [src]="'http://via.placeholder.com/500x200/00?text=audio'" ></audio>
+        <video *ngIf="image.media_type===video" [src]="'http://via.placeholder.com/500x200/00?text=Video'"></video>
       </ion-thumbnail>
       <h2>{{image.title}}</h2>
       <p>{{image.time_added | date :('dd.MM.yyyy')}}</p>
-      <p>{{image.details}}</p>
-      <button  ion-button clear item-end>View</button>
+      <p>{{image.description }}</p>
+      <button  ion-button  item-end (click)="goToPlayer(image.file_id)" >View</button>
     </ion-item>
   </ion-list>
 

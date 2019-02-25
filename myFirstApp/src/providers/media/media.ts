@@ -17,6 +17,7 @@ import {
 @Injectable()
 export class MediaProvider {
   mediaAPI = 'http://media.mw.metropolia.fi/wbma';
+  imageUrl ='http://media.mw.metropolia.fi/wbma/uploads/';
   loggedin = false;
 
   constructor(public http: HttpClient) {
@@ -66,4 +67,23 @@ export class MediaProvider {
     return this.http.post<UploadResponse>(this.mediaAPI + '/media',
       data, httpOptions);
   }
+  getUserName(id){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token': localStorage.getItem('token'),
+      }),
+    };
+    return this.http.get<User>(this.mediaAPI + '/users/'+id, httpOptions);
+  }
+  /*generateDetailInfo(mediaInfo: Pic) {
+    const descriptionObj = JSON.parse(mediaInfo.description);
+    const description = descriptionObj.description;
+    const filters = descriptionObj.filters;
+
+    let detailInfo = descriptionObj;
+    detailedMedia = { description: description, filters: filters };
+
+    return detailInfo;
+  }*/
+
 }

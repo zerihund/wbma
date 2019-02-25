@@ -5,6 +5,7 @@ import { Pic } from '../../interfaces/Pic';
 import { MediaProvider } from '../../providers/media/media';
 import { Observable } from 'rxjs';
 import { UploadPage } from '../upload/upload';
+import { PlayerPage } from '../player/player';
 
 @Component({
   selector: 'page-home',
@@ -27,6 +28,11 @@ export class HomePage {
   }
   goToUpload(){
     this.navCtrl.push(UploadPage);
+  }
+  goToPlayer(file_id){
+    this.navCtrl.push(PlayerPage, {
+      file_id:file_id
+    });
   }
 
 }

@@ -12,6 +12,7 @@ import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { MenuPage } from '../pages/menu/menu';
 import { UploadPage } from '../pages/upload/upload';
+import { PlayerPage } from '../pages/player/player';
 import { Chooser } from '@ionic-native/chooser';
 
 @NgModule({
@@ -22,6 +23,7 @@ import { Chooser } from '@ionic-native/chooser';
     ProfilePage,
     MenuPage,
     UploadPage,
+    PlayerPage,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ import { Chooser } from '@ionic-native/chooser';
     ProfilePage,
     MenuPage,
     UploadPage,
+    PlayerPage,
   ],
   providers: [
     StatusBar,
